@@ -1,9 +1,6 @@
 package com.project.insurance.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,9 +16,14 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "sure_name", nullable = false)
     private String sureName;
+    @Column(name = "day_of_birh", nullable = false)
     private String dayOfBirth;
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
-    private Long number;
+    @Column(name = "phone_number", nullable = false , unique = true)
+    private Long phoneNumber;
 }
