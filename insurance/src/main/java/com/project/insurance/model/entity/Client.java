@@ -24,6 +24,14 @@ public class Client {
     private String dayOfBirth;
     @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @Column(name = "phone_number", nullable = false , unique = true)
+    @Column(name = "phone_number", unique = true)
     private Long phoneNumber;
+
+    public Client(String name, String sureName, String dayOfBirth, String email, Long phoneNumber) {
+        this.name = name;
+        this.sureName = sureName;
+        this.dayOfBirth = dayOfBirth;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+    }
 }
