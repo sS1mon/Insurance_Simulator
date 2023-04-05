@@ -18,9 +18,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public ClientRegRespDto clientRegistration(ClientRegDto clientRegDto) {
-        if (clientRegDto == null) {
+        if (clientRegDto == null || clientRegDto.getName() == null || clientRegDto.getName().isEmpty() ||
+                clientRegDto.getSurName() == null || clientRegDto.getSurName().isEmpty() ||
+                clientRegDto.getEmail() == null || clientRegDto.getEmail().isEmpty() ||
+                clientRegDto.getDayOfBirth() == null || clientRegDto.getDayOfBirth().isEmpty()){
+
             String text = "Please fill out following missing fields:";
-            if (clientRegDto.getName() == null || clientRegDto.getSurName().isEmpty()) {
+            if (clientRegDto.getName() == null || clientRegDto.getName().isEmpty()) {
                 text += " name;";
             }
             if (clientRegDto.getSurName() == null || clientRegDto.getSurName().isEmpty()) {
@@ -28,9 +32,6 @@ public class ClientServiceImpl implements ClientService {
             }
             if (clientRegDto.getEmail() == null || clientRegDto.getEmail().isEmpty()) {
                 text += " email;";
-            }
-            if (clientRegDto.getPhoneNumber() == null) {
-                text += " phone number;";
             }
             if (clientRegDto.getDayOfBirth() == null || clientRegDto.getDayOfBirth().isEmpty()) {
                 text += " day of birth;";
