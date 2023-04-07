@@ -23,26 +23,6 @@ public class ClientServiceImpl implements ClientService {
     }
 
     public ClientResponseDto clientRegistration(ClientRegDto clientRegDto) {
-        if (clientRegDto == null || clientRegDto.getName() == null || clientRegDto.getName().isEmpty() ||
-                clientRegDto.getSurName() == null || clientRegDto.getSurName().isEmpty() ||
-                clientRegDto.getEmail() == null || clientRegDto.getEmail().isEmpty() ||
-                clientRegDto.getDayOfBirth() == null || clientRegDto.getDayOfBirth().isEmpty()){
-
-            String text = "Please fill out following missing fields:";
-            if (clientRegDto.getName() == null || clientRegDto.getName().isEmpty()) {
-                text += " name;";
-            }
-            if (clientRegDto.getSurName() == null || clientRegDto.getSurName().isEmpty()) {
-                text += " sure name;";
-            }
-            if (clientRegDto.getEmail() == null || clientRegDto.getEmail().isEmpty()) {
-                text += " email;";
-            }
-            if (clientRegDto.getDayOfBirth() == null || clientRegDto.getDayOfBirth().isEmpty()) {
-                text += " day of birth;";
-            }
-            throw new IllegalStateException(text);
-        }
         Client client = clientRepository.findByEmail(clientRegDto.getEmail());
         if (client == null) {
             client = new Client(clientRegDto);
