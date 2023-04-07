@@ -25,11 +25,13 @@ public class CarInsurance {
     private Integer power;
     @Column (name = "was_modified", nullable = false)
     private Boolean modified;
-    @Column (name = "type_of_vehicle", nullable = false)
+    @Column (name = "type_of_vehicle")
     private Type type;
     @Column (name = "vin", nullable = false)
     private String vin;
+
     @Column (name = "owner", nullable = false)
+
     private Long owner;
 
 
