@@ -2,6 +2,7 @@ package com.project.insurance.model.dto;
 
 import com.project.insurance.enums.Type;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -16,11 +17,11 @@ public class InsureCarDto {
     private String brand;
     @NotBlank(message = "Please fill out model of your car!")
     private String model;
-    @NotBlank(message = "Please fill out year of production!")
+    @NotNull(message = "Please fill out year of production!")
     private Integer productionYear;
-    @NotBlank(message = "Please fill out power of the car")
+    @NotNull(message = "Please fill out power of the car")
     private Integer power;
-    @NotBlank(message = "Please choose if was car modified")
+    @NotNull(message = "Please choose if was car modified")
     private Boolean modified;
     private Type Type;
     @NotBlank(message = "Please fill out \"VIN\" of the car!")

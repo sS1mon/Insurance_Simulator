@@ -47,7 +47,7 @@ public class CarInsurance {
         this.vin = vin;
     }
 
-    public CarInsurance(InsureCarDto car){
+    public CarInsurance(InsureCarDto car, Client owner){
         this.brand = car.getBrand();
         this.model = car.getModel();
         this.productionYear = car.getProductionYear();
@@ -55,5 +55,6 @@ public class CarInsurance {
         this.modified = car.getModified();
         this.type = car.getType();
         this.vin = car.getVin();
+        this.owner = owner;
     }
 }

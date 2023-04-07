@@ -4,6 +4,7 @@ import com.project.insurance.enums.Type;
 import com.project.insurance.model.dto.ClientRegDto;
 import com.project.insurance.model.dto.ClientResponseDto;
 import com.project.insurance.model.dto.InsureCarDto;
+import com.project.insurance.model.entity.CarInsurance;
 import com.project.insurance.model.entity.Client;
 import com.project.insurance.repository.CarInsuranceRepository;
 import com.project.insurance.repository.ClientRepository;
@@ -36,11 +37,15 @@ public class ClientServiceImpl implements ClientService {
 
     public ClientResponseDto carInsuranceRegistration(InsureCarDto car){
         Client client = clientRepository.findByEmail(car.getEmail());
-        if (carInsuranceRepository.findByVin(car.getVin()) != null){
-
+        if (client == null){
+            throw new IllegalStateException("You have to register first");
+        }
+        if (carInsuranceRepository.findByVin(car.getVin()) == null){
+            CarInsurance carInsurance = new CarInsurance(car, client);
+            carInsuranceRepository.save(carInsurance);
+            return new ClientResponseDto("Your " + car.getBrand() + " " + car.getModel() + " has been insured.");
         }else {
             throw new IllegalStateException("This car is already insured");
         }
-        return new ClientResponseDto("thanks");
     }
 }

@@ -1,6 +1,7 @@
 package com.project.insurance.controller;
 
 import com.project.insurance.model.dto.ClientRegDto;
+import com.project.insurance.model.dto.InsureCarDto;
 import com.project.insurance.service.ClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,18 @@ public class InsuranceController {
         try {
             return new ResponseEntity<>(clientService.clientRegistration(clientRegDto), HttpStatus.ACCEPTED);
         } catch (Exception e){
+            Map<String, String> response = new HashMap<>();
+            response.put("status", "400");
+            response.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+    @PostMapping("/car/insure")
+    public ResponseEntity<Object> insureCar (@Valid @RequestBody InsureCarDto insureCarDto){
+        try {
+            return new ResponseEntity<>(clientService.carInsuranceRegistration(insureCarDto), HttpStatus.ACCEPTED);
+        }catch (Exception e){
             Map<String, String> response = new HashMap<>();
             response.put("status", "400");
             response.put("error", e.getMessage());
