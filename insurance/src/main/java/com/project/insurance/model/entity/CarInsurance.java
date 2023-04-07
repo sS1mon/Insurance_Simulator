@@ -1,13 +1,14 @@
 package com.project.insurance.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.project.insurance.enums.Type;
+import com.project.insurance.model.dto.InsureCarDto;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @RequiredArgsConstructor
 @Entity
 public class CarInsurance {
@@ -25,14 +26,34 @@ public class CarInsurance {
     private Integer power;
     @Column (name = "was_modified", nullable = false)
     private Boolean modified;
+    @Enumerated(EnumType.STRING)
     @Column (name = "type_of_vehicle")
     private Type type;
     @Column (name = "vin", nullable = false)
     private String vin;
 
-    @Column (name = "owner", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "owner_id", nullable = false)
+    @JsonBackReference
+    private Client owner;
 
-    private Long owner;
+    public CarInsurance(String brand, String model, Integer productionYear, Integer power, Boolean modified, Type type, String vin, Client owner) {
+        this.brand = brand;
+        this.model = model;
+        this.productionYear = productionYear;
+        this.power = power;
+        this.modified = modified;
+        this.type = type;
+        this.vin = vin;
+    }
 
-
+    public CarInsurance(InsureCarDto car){
+        this.brand = car.getBrand();
+        this.model = car.getModel();
+        this.productionYear = car.getProductionYear();
+        this.power = car.getPower();
+        this.modified = car.getModified();
+        this.type = car.getType();
+        this.vin = car.getVin();
+    }
 }
