@@ -16,7 +16,7 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-public class InsuranceController {
+public class ClientController {
 
     private final ClientService clientService;
 
