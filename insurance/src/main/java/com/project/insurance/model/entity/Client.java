@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.project.insurance.model.dto.ClientRegDto;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,8 +30,10 @@ public class Client {
     @Column(name = "sure_name", nullable = false, length = 35)
     private String sureName;
     @Column(name = "day_of_birh", nullable = false)
+    @Pattern(regexp = "^[0-9_.]{10}$", message = "Day of birth must be in this format: DD.MM.YYYY")
     private String dayOfBirth;
     @Column(name = "email", nullable = false, unique = true,length = 50)
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Please check if your email is correct!")
     private String email;
     @Column(name = "phone_number", unique = true)
     private Long phoneNumber;
