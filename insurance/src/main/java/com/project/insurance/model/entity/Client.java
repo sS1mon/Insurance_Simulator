@@ -24,16 +24,14 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull(message = "Please fill the name!")
-    @Column(name = "name", nullable = false,length = 35)
+    @Column(name = "name", nullable = false,length = 50)
     private String name;
     @NotNull(message = "Please fill the sure name!")
-    @Column(name = "sure_name", nullable = false, length = 35)
+    @Column(name = "sure_name", nullable = false, length = 50)
     private String sureName;
     @Column(name = "day_of_birh", nullable = false)
-    @Pattern(regexp = "^[0-9_.]{10}$", message = "Day of birth must be in this format: DD.MM.YYYY")
     private String dayOfBirth;
-    @Column(name = "email", nullable = false, unique = true,length = 50)
-    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Please check if your email is correct!")
+    @Column(name = "email", nullable = false, unique = true,length = 80)
     private String email;
     @Column(name = "phone_number", unique = true)
     private Long phoneNumber;

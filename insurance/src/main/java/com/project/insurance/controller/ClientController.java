@@ -46,7 +46,14 @@ public class ClientController {
         }catch (Exception e){
             Map<String, String> response = new HashMap<>();
             response.put("status", "400");
-            response.put("error", e.getMessage());
+            String err = e.getMessage();
+            if (e.getMessage().contains("messageTemplate=")){
+                String [] msg = e.getMessage().split("messageTemplate=");
+                err = msg[msg.length-1];
+                msg = err.split("'");
+                err = msg[1];
+            }
+            response.put("error", err);
             return ResponseEntity.badRequest().body(response);
         }
     }
