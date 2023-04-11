@@ -23,14 +23,14 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull(message = "Please fill the name!")
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false,length = 35)
     private String name;
     @NotNull(message = "Please fill the sure name!")
-    @Column(name = "sure_name", nullable = false)
+    @Column(name = "sure_name", nullable = false, length = 35)
     private String sureName;
     @Column(name = "day_of_birh", nullable = false)
     private String dayOfBirth;
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email", nullable = false, unique = true,length = 50)
     private String email;
     @Column(name = "phone_number", unique = true)
     private Long phoneNumber;
