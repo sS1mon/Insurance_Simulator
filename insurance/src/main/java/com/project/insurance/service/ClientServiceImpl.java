@@ -38,7 +38,7 @@ public class ClientServiceImpl implements ClientService {
     public ClientResponseDto carInsuranceRegistration(InsureCarDto car){
         Client client = clientRepository.findByEmail(car.getEmail());
         if (client == null){
-            throw new IllegalStateException("You have to register first");
+            throw new IllegalStateException("You have to register to be our client first");
         }
         if (carInsuranceRepository.findByVin(car.getVin()) == null){
             CarInsurance carInsurance = new CarInsurance(car, client);

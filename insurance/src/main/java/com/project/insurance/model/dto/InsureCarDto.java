@@ -16,15 +16,13 @@ public class InsureCarDto {
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = "Please check if your email is correct!")
     private String email;
     @NotBlank(message = "Please fill out brand of your car!")
-    @Pattern(regexp = "^[a-zA-Z]+$")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "Please dont use any special characters or numbers!")
     private String brand;
     @NotBlank(message = "Please fill out model of your car!")
     private String model;
     @NotNull(message = "Please fill out year of production!")
-    @Pattern(regexp = "^[0-9]{4}$", message = "Year of production should have 4 digits!")
     private Integer productionYear;
     @NotNull(message = "Please fill out power of the car")
-    @Pattern(regexp = "^[0-9]{3}$")
     private Integer power;
     @NotNull(message = "Please choose if was car modified")
     private Boolean modified;
