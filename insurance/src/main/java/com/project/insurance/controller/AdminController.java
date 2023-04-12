@@ -22,7 +22,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @PostMapping("/list")
+    @PostMapping("/list-clients")
     public ResponseEntity<Object> getListOfClients(@Valid @RequestBody AdminDto admin){
         try {
             return new ResponseEntity<>(adminService.seeAllClients(admin), HttpStatus.ACCEPTED);
@@ -31,6 +31,18 @@ public class AdminController {
         response.put("status", "400");
         response.put("error", e.getMessage());
         return ResponseEntity.badRequest().body(response);
+        }
+    }
+
+    @PostMapping("/list-cars")
+    public ResponseEntity<Object> getListOfCars(@Valid @RequestBody AdminDto admin){
+        try {
+            return new ResponseEntity<>(adminService.seeAllInsuredCars(admin), HttpStatus.ACCEPTED);
+        }catch (Exception e){
+            Map<String, String> response = new HashMap<>();
+            response.put("status", "400");
+            response.put("error", e.getMessage());
+            return ResponseEntity.badRequest().body(response);
         }
     }
 
