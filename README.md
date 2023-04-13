@@ -29,4 +29,4 @@ if (ideas == true || advice == true){
 ```
 ### Feel free to contact me :
 [LinkedIn](https://www.linkedin.com/in/simon-selecky/) <br>
-https://img.shields.io/badge/email-seleckysimon%40gmail.com-blue
+[![Email] (https://img.shields.io/badge/email-seleckysimon%40gmail.com-blue)
