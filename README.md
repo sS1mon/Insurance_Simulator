@@ -28,5 +28,5 @@ if (ideas == true || advice == true){
     }
 ```
 ### Feel free to contact me :
-[LinkedIn](https://www.linkedin.com/in/simon-selecky/) <br>
-[![Email] (https://img.shields.io/badge/email-seleckysimon%40gmail.com-blue)]
+* [LinkedIn](https://www.linkedin.com/in/simon-selecky/) <br>
+* Email : seleckysimon@gmail.com
