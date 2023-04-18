@@ -31,4 +31,8 @@ public class ClientRegDto {
     @NotBlank(message = "Please fill out your day of birth!")
     @Pattern(regexp = "^[0-9_.]{10}$", message = "Day of birth must be in this format: DD.MM.YYYY")
     private String dayOfBirth;
+    @Pattern(regexp = "/^.{5,}$/")
+    private String password;
+    @Pattern(regexp = "/^.{5,}$/")
+    private String repeatPassword;
 }

@@ -23,6 +23,8 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "role", nullable = false,length = 10)
+    private Roles role;
     @NotNull(message = "Please fill the name!")
     @Column(name = "name", nullable = false,length = 50)
     private String name;
@@ -35,6 +37,7 @@ public class Client {
     private String email;
     @Column(name = "phone_number", unique = true)
     private Long phoneNumber;
+    private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
