@@ -7,14 +7,13 @@
 
 ## What's next?
 ### In short run:
+* Implement WJT
 * Implementation of H2
 * Implementation of SwaggerUI
 * Integration tests 
 * Module tests 
 
 ### In long run:
-* Implement JWT
-* Create proper authorization and authentication
 * Upload it on hosting server
 
 ## **You**
