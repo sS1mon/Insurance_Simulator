@@ -23,6 +23,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "Role isn't assin")
     @Column(name = "role", nullable = false,length = 10)
     private Roles role;
     @NotNull(message = "Please fill the name!")
@@ -37,6 +38,7 @@ public class Client {
     private String email;
     @Column(name = "phone_number", unique = true)
     private Long phoneNumber;
+    @Column(name = "password", nullable = false, length = 200)
     private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -51,11 +53,20 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
-    public Client (ClientRegDto reg){
+    public Client (ClientRegDto reg, Roles role){
         this.name = reg.getName();
         this.sureName = reg.getSurName();
         this.dayOfBirth = reg.getDayOfBirth();
         this.email = reg.getEmail();
         this.phoneNumber = reg.getPhoneNumber();
+        this.password = reg.getPassword();
+        if (role.name().equals(Roles.CLIENT.name())){
+            this.role = Roles.CLIENT;
+        } else if (role.name().equals(Roles.EMPLOYEE.name())) {
+            this.role = Roles.EMPLOYEE;
+        } else {
+            this.role = Roles.ADMIN;
+        }
+
     }
 }
