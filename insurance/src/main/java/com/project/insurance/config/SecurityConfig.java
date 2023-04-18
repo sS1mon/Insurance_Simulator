@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,7 +29,8 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/registration", "/car/insure", "/list-clients", "/list-cars").permitAll()
+                        .requestMatchers("/registration", "/login").permitAll()
+                        .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
@@ -39,9 +41,9 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-//    @Bean
-//    public AuthenticationManager authenticationManager(){
-//        var authenticationProvider= new TodoAppUsernamePasswordAuthenticationProvider(clientRepository,passwordEncoder());
-//        return new ProviderManager(authenticationProvider);
-//    }
+    @Bean
+    public AuthenticationManager authenticationManager(){
+        var authenticationProvider = new JwtAuth(clientRepository, passwordEncoder());
+        return new ProviderManager(authenticationProvider);
+    }
 }
