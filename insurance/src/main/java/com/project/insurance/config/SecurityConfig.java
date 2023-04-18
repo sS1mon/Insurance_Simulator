@@ -39,9 +39,9 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public AuthenticationManager authenticationManager(){
-        var authenticationProvider= new TodoAppUsernamePasswordAuthenticationProvider(clientRepository,passwordEncoder());
-        return new ProviderManager(authenticationProvider);
-    }
+//    @Bean
+//    public AuthenticationManager authenticationManager(){
+//        var authenticationProvider= new TodoAppUsernamePasswordAuthenticationProvider(clientRepository,passwordEncoder());
+//        return new ProviderManager(authenticationProvider);
+//    }
 }

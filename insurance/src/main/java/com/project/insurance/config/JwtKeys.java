@@ -22,16 +22,16 @@ public class JwtKeys {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    public Authentication authentication(Authentication auth) throws AuthenticationException{
-        String email = auth.getName();
-        String passw = auth.getCredentials().toString();
-        Client client = clientRepository.findByEmail(email);
-        if (client != null){
-            if (passwordEncoder.matches(passw, client.getPassword())){
-                List<GrantedAuthority> authorities = new ArrayList<>();
-                authorities.add(new SimpleGrantedAuthority(client.getRole))
-            }
-        }
-    }
+//    @Override
+//    public Authentication authentication(Authentication auth) throws AuthenticationException{
+//        String email = auth.getName();
+//        String passw = auth.getCredentials().toString();
+//        Client client = clientRepository.findByEmail(email);
+//        if (client != null){
+//            if (passwordEncoder.matches(passw, client.getPassword())){
+//                List<GrantedAuthority> authorities = new ArrayList<>();
+//                authorities.add(new SimpleGrantedAuthority(client.getRole))
+//            }
+//        }
+//    }
 }

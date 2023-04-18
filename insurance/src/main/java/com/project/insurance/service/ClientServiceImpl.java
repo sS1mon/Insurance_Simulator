@@ -36,6 +36,7 @@ public class ClientServiceImpl implements ClientService {
                 } else {
                     client = new Client(clientRegDto, Roles.CLIENT);
                 }
+                client.setPassword(passwordEncoder.encode(clientRegDto.getPassword()));
                 clientRepository.save(client);
                 String txt = "Dear " + client.getName() + " " + client.getSureName() + " thanks for your trust, we will keep you updated.";
                 return new ClientResponseDto(txt);
